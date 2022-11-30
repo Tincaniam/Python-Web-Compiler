@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>interPyter</title>
+  </head>
+  <body>
+    <br>
+    <div class="crt title"><h1>interPyter</h1></div>
+    <br>
+      <form action="/execute_code" method="POST">
+          {% csrf_token %}
+          <textarea id="code_field" name="code_field" class="terminal" rows="10" placeholder="print('Hello, world!')">{{ code_data }}</textarea>
+          <button type="submit" class="submitButton">Run</button>
+          <div id="outputHelp" style="color:green; margin-left: 2%; padding: 1%;">Console</div>
+          <textarea id="output" name="output" class="terminal-output" rows="4">{{ output }}</textarea>
+      </form>
+  </body>
+</html>
